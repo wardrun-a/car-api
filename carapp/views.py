@@ -77,8 +77,6 @@ class CarViewsets(viewsets.ModelViewSet):
     def destroy(self,request,*args,**kwargs):
         try: 
             car = self.get_object()
-            rating = Rating.objects.get(pk=car.id)
-            rating.delete()
             car.delete()
             return Response({"Message": "Deletion Successfull!"})
         except Car.DoesNotExist:         
